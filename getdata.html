@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rander data</title>
+    <style>
+        th, td {
+            padding: 10px; 
+        }
+    </style>
+</head>
+<body>
+<table id="data-table">
+    <thead>
+        <tr>
+            <th>payment id</th>
+            <th>name</th>
+            <th>country code</th>
+            <th>phone number</th>
+            <th>plan name</th>
+            <th>amount</th>
+            <th>tax</th>
+            <th>total amount</th>
+            <th>order id</th>
+            <th>reference id</th><br>
+            <th>payment method</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    fetch("payment_data.json")
+        .then((response) => response.json())
+        .then((data) => {
+            const tableBody = document.querySelector("#data-table tbody");
+            data.forEach((row) => {
+                const newRow = document.createElement("tr");
+                newRow.innerHTML = `
+                        <td>${row.payment_id}</td>
+                        <td>${row.display_name}</td>
+                        <td>${row.country_code}</td>
+                        <td>${row.mobile_number}</td>
+                        <td>${row.plan_name}</td>
+                        <td>${row.amount}</td>
+                        <td>${row.tax}</td>
+                        <td>${row.total_amount}</td>                            
+                        <td>${row.orderid}</td>
+                        <td>${row.referenceid}</td>
+                        <td>${row.paymentmethod}</td>
+                        <td>${row.payment_status}</td>
+                        <td>${row.payment_date}</td>
+                `;
+                tableBody.appendChild(newRow);
+            });
+        })
+        .catch((error) => console.error("Error fetching data: " + error));
+});
+
+</script>
+</html>

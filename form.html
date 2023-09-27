@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form data</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <div class="container-full">
+        <h1 style="text-align: center; color: rgb(119, 155, 205);"><b>User Experience Research Form</b></h1>
+        <form id="myForm" action="form.php" method="POST">
+            <label for="fname">Name<span class="required">*</span></label><br>
+            <input type="text" id="fname" name="fname" placeholder="First name" required>
+            <input type="text" id="lname" name="lname" placeholder="Last name" required><br>
+            <label for="email">Email id<span class="required">*</span></label><br>
+            <input type="email" id="email" name="email" placeholder="Email id" required><br>
+            <label for="phone">Phone<span class="required">*</span></label><br>
+            <input type="text" id="phone" name="phonenumber" placeholder="Phone no" required><br>
+            <label for="address">Address<span class="required">*</span></label><br>
+            <input type="text" id="address" name="address" placeholder="Full address" required><br>
+            <input type="text" id="city" name="city" placeholder="City" required><br>
+            <input type="text" id="region" name="region" placeholder="Region" required><br>
+            <input type="text" id="pinno" name="pinno" placeholder="Pin code" required><br>
+            
+            <h2>How was my Form</h2>
+            <label class="radio-label">
+                <input type="radio" id="veryGoodFeedback" name="feedback" value="Very Good">
+                Very Good
+            </label>
+    
+            <label class="radio-label">
+                <input type="radio" id="goodFeedback" name="feedback" value="Good">
+                Good
+            </label>
+    
+            <label class="radio-label">
+                <input type="radio" id="averageFeedback" name="feedback" value="Average">
+                Average
+            </label>
+
+            <h2>Rate my Form</h2>
+            <label class="radio-label">
+                <input type="radio" id="0-3Feedback" name="rating" value="0-3">
+                0-3
+            </label>
+    
+            <label class="radio-label">
+                <input type="radio" id="4-7Feedback" name="rating" value="4-7">
+                4-7
+            </label>
+    
+            <label class="radio-label">
+                <input type="radio" id="8-10Feedback" name="rating" value="8-10">
+                8-10
+            </label><br><br>
+            
+            <button type="submit" name="submit" value="Submit">Submit</button>
+        </form>
+        
+        <div id="error" style="color: red;"></div>
+    </div>
+
+    <script>
+        // alert("Fill the form");
+        const myForm = document.getElementById('myForm');
+        const errorElement = document.getElementById('error');
+
+        myForm.addEventListener('submit', (e) => {
+            let messages = [];
+            const fname = document.getElementById('fname').value.trim();
+            const lname = document.getElementById('lname').value.trim();
+            if (fname === '' || lname === '') {
+                messages.push('First name and Last name are required');
+            }
+            const email = document.getElementById('email').value.trim();
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(email)) {
+                messages.push('Invalid email format');
+            }
+            const phone = document.getElementById('phone').value.trim();
+            const phonePattern = /^\d{10}$/;
+            if (!phonePattern.test(phone)) {
+                messages.push('Invalid phone number (10 digits required)');
+            }
+            const address = document.getElementById('address').value.trim();
+            if (address === '') {
+                messages.push('Address is required');
+            }
+            const city = document.getElementById('city').value.trim();
+            const region = document.getElementById('region').value.trim();
+            const pinno = document.getElementById('pinno').value.trim();
+            if (city === '' || region === '' || pinno === '') {
+                messages.push('City, Region, and Pin code are required');
+            }
+            
+            const feedback = document.querySelector('input[name="feedback"]:checked');
+            if (!feedback) {
+                messages.push('Please provide feedback for the form');
+            }
+            
+            const rating = document.querySelector('input[name="rating"]:checked');
+            if (!rating) {
+                messages.push('Please rate the form');
+            }
+
+            if (messages.length > 0) {
+                e.preventDefault();
+                errorElement.innerText = messages.join(', ');
+            }
+        });
+    </script>
+</body>
+</html>

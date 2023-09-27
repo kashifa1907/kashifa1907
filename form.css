@@ -1,0 +1,101 @@
+body{
+    background-color:blanchedalmond;
+    padding: 0px;
+    display: flex;
+    text-align: center;
+}
+.container-full form{
+    padding: 10px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-right: 300px;
+    
+    
+}
+
+
+/* ._self{
+    display: flex;
+} */
+.required {
+    color: red;
+    margin-left: 5px;
+}
+.inline-form {
+    display: flex;
+    flex-direction: row; /* Display the items horizontally */
+}
+
+.radio-option {
+    margin-right: 20px; /* Add spacing between options */
+}
+
+/* Optional: Style the radio buttons and labels as needed */
+input[type="radio"] {
+    margin-right: 5px; /* Add spacing between radio button and label */
+}
+
+.radio-label {
+    display: inline-block;
+    margin-right: 20px; /* Adjust the spacing between radio buttons as needed */
+}
+
+label{
+    margin-right:350px;
+}
+input[type="fname"] {
+    width: 50%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 520px;   
+}
+input[type="text"] {
+    width: 50%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 500px;  
+}
+.button{
+    width: 100px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 750px;
+    border-radius: 30px;
+    cursor: pointer;
+    text-align: center;
+    
+}
+.container-full{
+    text-align: center;  
+    width: 100%; 
+}
+.container-full.h1{
+    text-align: center;
+}
+.content{
+    text-align: left;
+    padding-left: 60px;
+}
+.content.h1{
+    text-decoration: underline;
+}
+label{
+    margin-left:90px;
+    /* margin-top:80px; */
+}
+input[type="radio"]{
+    border-radius: 3px;
+    cursor: pointer;  
+    display: inline;  
+}
+button:hover{
+    background-color:cornsilk;
+}
+.custom-error {
+    font-size: 16px; /* Font size */
+    margin-bottom: 50px; /* Spacing from form elements */
+    font-weight: bold; /* Font weight */
+}
