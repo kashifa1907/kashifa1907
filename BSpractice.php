@@ -111,7 +111,62 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-    </div>      
+    </div>  
+    <div class="container">
+        <table class="table" id="data-table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Payment ID</th>
+                    <th>Name</th>
+                    <th>Country Code</th>
+                    <th>Phone Number</th>
+                    <th>Plan Name</th>
+                    <th>Amount</th>
+                    <th>Tax</th>
+                    <th>Total Amount</th>
+                    <th>Order ID</th>
+                    <th>Reference ID</th>
+                    <th>Payment Method</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+      
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    fetch("payment_data.json")
+        .then((response) => response.json())
+        .then((data) => {
+            const tableBody = document.querySelector("#data-table tbody");
+            data.forEach((row) => {
+                const newRow = document.createElement("tr");
+                newRow.innerHTML = `
+                        <td>${row.payment_id}</td>
+                        <td>${row.display_name}</td>
+                        <td>${row.country_code}</td>
+                        <td>${row.mobile_number}</td>
+                        <td>${row.plan_name}</td>
+                        <td>${row.amount}</td>
+                        <td>${row.tax}</td>
+                        <td>${row.total_amount}</td>                            
+                        <td>${row.orderid}</td>
+                        <td>${row.referenceid}</td>
+                        <td>${row.paymentmethod}</td>
+                        <td>${row.payment_status}</td>
+                        <td>${row.payment_date}</td>
+                `;
+                tableBody.appendChild(newRow);
+            });
+        })
+        .catch((error) => console.error("Error fetching data: " + error));
+});
+
+</script>
+          
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous">

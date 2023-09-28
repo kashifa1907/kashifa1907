@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rander data</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         th, td {
             padding: 10px; 
@@ -11,26 +12,31 @@
     </style>
 </head>
 <body>
-<table id="data-table">
-    <thead>
-        <tr>
-            <th>payment id</th>
-            <th>name</th>
-            <th>country code</th>
-            <th>phone number</th>
-            <th>plan name</th>
-            <th>amount</th>
-            <th>tax</th>
-            <th>total amount</th>
-            <th>order id</th>
-            <th>reference id</th><br>
-            <th>payment method</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table>
+    <div class="container">
+        <table class="table" id="data-table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Payment ID</th>
+                    <th>Name</th>
+                    <th>Country Code</th>
+                    <th>Phone Number</th>
+                    <th>Plan Name</th>
+                    <th>Amount</th>
+                    <th>Tax</th>
+                    <th>Total Amount</th>
+                    <th>Order ID</th>
+                    <th>Reference ID</th>
+                    <th>Payment Method</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
     fetch("payment_data.json")
